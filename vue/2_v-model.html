@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双向数据绑定</title>
+    <style>
+        .blue{
+            color:aqua;
+        }
+        .red{
+            background:brown;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="msg">
+        <p :class="['blue',{red:isRed}]">{{msg}}</p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                msg:'1111',
+                isRed:true
+            }
+        });
+
+    </script>
+</body>
+</html>

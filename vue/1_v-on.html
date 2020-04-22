@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双向数据绑定</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="handleClick">点击加</button>
+        <input type="num" v-model="num" @keyup.13="handleClick">
+        {{count}}
+    </div>
+    <script src='./vue.js'></script>
+    <script>
+        let vm= new Vue({
+            el:"#app",
+            data:{
+                count:0,
+                num:0,
+            },
+            methods:{
+                handleClick(){
+                    this.count+=parseInt(this.num);
+                }
+            }
+        }
+        );
+    </script>
+    
+   
+</body>
+</html>

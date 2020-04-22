@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        .checked{
+            background-color: crimson;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="text-center">
+        <h1>todoList</h1>
+        <hr>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>选中</td>
+                    <td>商品</td>
+                    <td>价格</td>
+                    <td>删除</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(product,index) in productList" @click="checkedList(product)" :class="{checked:product.isFlag}">
+                    <td><input @click.stop type="checkbox" v-model="selectedList" :value="index"></td>
+                    <td>{{product.productName}}</td>
+                    <td>{{product.productPrice}}</td>
+                    <td><button type="button" @click.stop="del(index)" class="btn btn-danger glyphicon glyphicon-remove btn btn-default btn-xs"></button></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td><button type="button" class="btn btn-danger" @click="delList" >删除选中</button></td>
+                    <td colspan=3>选中总价格为{{total}}元</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                productList:[
+                    {
+                        productName:'衣服',
+                        productPrice:100,
+                        isFlag:false,
+                    },{
+                        productName:'裤子',
+                        productPrice:1020,
+                        isFlag:false,
+                    },{
+                        productName:'鞋',
+                        productPrice:900,
+                        isFlag:false,
+                    },{
+                        productName:'手机',
+                        productPrice:10000,
+                        isFlag:false,
+                    },
+                ],
+                selectedList:[]
+            },
+            methods:{
+                checkedList(product){
+                    product.isFlag=!product.isFlag;
+                },
+                del(index){
+                    this.productList.splice(index,1);
+                },
+                delList(){
+                    this.productList=this.productList.filter((elem,index)=>{
+                        return !this.selectedList.includes(index)
+                    });
+                    this.selectedList=[]
+                }
+            },
+            computed:{
+                total(){
+                    let sum=0;
+                   this.productList.forEach((elem)=>{
+                        if(elem.isFlag){
+                            sum+=elem.productPrice;
+                        }
+                   })
+                    return sum;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
