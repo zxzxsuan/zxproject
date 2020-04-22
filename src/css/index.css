@@ -1,0 +1,12 @@
+ /*Odd 和 even 是可用于匹配下标是奇数或偶数的子元素的关键词（第一个子元素的下标是 1）。*/
+ div:nth-child(odd) {
+     background: palevioletred;
+ }
+
+ div:nth-child(even) {
+     background: orchid;
+ }
+
+ body {
+     background: orange;
+ }

@@ -1,0 +1,12 @@
+{
+    "presets": [
+    [
+      "@babel/preset-env",//只能转换部分es6语法
+      {
+        useBuiltIns: "usage"
+      }
+    ],
+    "@babel/preset-react"
+
+  ]
+}
