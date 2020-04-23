@@ -9,12 +9,33 @@
         .checked{
             background-color: crimson;
         }
+        .add-style{
+            margin:20px 0;
+        }
     </style>
 </head>
 <body>
     <div id="app" class="text-center">
         <h1>todoList</h1>
         <hr>
+        <form class="form-inline add-style" @submit.prevent>
+            <div class="form-group">
+              <label for="searchName">商品名称</label>
+              <input type="text" class="form-control" id="searchName" placeholder="请输入商品名" v-model="searchName">
+            </div>
+            <button type="submit" class="btn btn-default" @click="searchProduct">搜索</button>
+          </form>
+        <form class="form-inline add-style" @submit.prevent>
+            <div class="form-group">
+              <label for="addName">商品名称</label>
+              <input type="text" class="form-control" id="addName" placeholder="请输入商品名" v-model="addName">
+            </div>
+            <div class="form-group">
+              <label for="addPrice">商品价格</label>
+              <input type="number" class="form-control" id="addPrice" placeholder="请输入价格" v-model="addPrice">
+            </div>
+            <button type="submit" class="btn btn-default" @click="addProduct">添加</button>
+          </form>
         <table class="table table-bordered">
             <thead>
                 <tr class="warning">
@@ -66,6 +87,9 @@
                     },
                 ],
                 checkedList:[],
+                addName:'',
+                addPrice:0,
+                searchName:'',
             },
             methods:{
                 changeColor(product){
@@ -79,6 +103,23 @@
                         return !this.checkedList.includes(index);
                     });
                     this.checkedList=[];
+                },
+                addProduct(){
+                    this.productList.push({
+                        productName:this.addName,
+                        productPrice:this.addPrice,
+                        isFlag:false,
+                    });
+                    this.addName="";
+                    this.addPrice=0;
+                },
+                searchProduct(){
+                    this.productList=this.productList.filter((elem)=>{
+                        if(elem.productName.includes(this.searchName)){
+                            return elem;
+                        }
+                    });
+                    this.searchName=[];
                 }
             },
             computed:{
@@ -94,7 +135,7 @@
                     //数组循环方法二
                    return this.productList.reduce((total,elem)=>{
                         if(elem.isFlag){
-                             total+=elem.productPrice;
+                             total+=parseInt(elem.productPrice);
                         }
                         return total;
                     },0)

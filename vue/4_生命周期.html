@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命周期</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <button @click="change">点击改变</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                msg:'hello world'
+            },
+            methods:{
+                change(){
+                    this.msg='你好'
+                }
+            },
+            beforeCreate(){
+                console.log("beforeCreate");
+                console.log(this.$el);
+                console.log(this.$data);
+            },
+            created(){
+                console.log("created");
+                console.log(this.$el);//undefined
+                console.log(this.$data);//有值了
+            },
+            beforeMount(){
+                console.log("beforeMount");
+                console.log(this.$el);//有值了
+                console.log(this.$data);//有值了
+                console.log(document.getElementById("app").innerHTML);
+            },
+            mounted(){
+                console.log("mounted");
+                console.log(this.$el);//有值了
+                console.log(this.$data);//有值了
+                console.log(document.getElementById("app").innerHTML);
+            },
+            beforeUpdate(){
+                console.log("beforeUpdate");
+                console.log(this.$data);//被更新
+                console.log(document.getElementById("app").innerHTML);//没有被更新
+            },
+            updated(){
+                console.log("updated");
+                console.log(this.$data);//被更新
+                console.log(document.getElementById("app").innerHTML);//被更新
+            }
+        })
+    </script>
+</body>
+</html>
