@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>component</title>
+</head>
+<body>
+    <div id="app">
+        <todo-list v-for="(product,index) in productList" :key="index" :productsname="product.productName" :productsprice="product.productPrice"></todo-list>  
+    </div>
+    <template id="products">
+        <div>
+            <span>商品名称:{{productsname}}</span>
+            <span>商品价格:{{productsprice}}</span>
+        </div>
+        
+    </template>
+    <script src="vue.js"></script>
+    <script>
+         Vue.component("todoList",{
+             template:"#products",
+            //props:['productsname','productsprice'],
+            props:{//通常你希望每个 prop 都有指定的值类型。这时，你可以以对象形式列出 prop，这些属性的名称和值分别是 prop 各自的名称和类型
+                productsname:String,
+                productsprice:Number
+            }
+         }
+         );
+        new Vue({
+            el:'#app',
+            data:{
+                productList:[
+                    {
+                        productName:'衣服',
+                        productPrice:100,
+                        isFlag:false,
+                    },{
+                        productName:'裤子',
+                        productPrice:1020,
+                        isFlag:false,
+                    },{
+                        productName:'鞋',
+                        productPrice:900,
+                        isFlag:false,
+                    },{
+                        productName:'手机',
+                        productPrice:10000,
+                        isFlag:false,
+                    },
+                ],
+            },
+           
+        })
+
+    </script>
+</body>
+</html>
