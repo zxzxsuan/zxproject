@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var num =["","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"];
+        
+        function letterCombinations(dig){
+            var arr=dig.split("");//[2,3,4]
+            var code=[];
+            arr.forEach((item)=>{
+                code.push(num[item]);
+            });
+            return fn(code);
+        }
+        function fn(code){
+           // ["abc","def","ghi"]
+           let res=[];
+            for(let i=0;i<code[0].length;i++){
+                for(let j =0;j<code[1].length;j++){
+                    res.push(code[0][i]+code[1][j]);
+                }
+            }
+            code.splice(0,2,res);
+            if(code.length>1){
+                fn(code);
+            }
+            return code[0];
+            
+            
+        }
+        console.log(letterCombinations("234"));
+    </script>
+</body>
+</html>

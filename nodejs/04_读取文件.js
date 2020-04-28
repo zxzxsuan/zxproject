@@ -3,6 +3,7 @@ var url=require("url");
 var fs = require("fs");
 
 http.createServer(function(req,res){
+    console.log(__dirname);
     var indexPath = __dirname+"/"+url.parse("demo.html").pathname;
     var indexData=fs.readFileSync(indexPath,"UTF-8");
     res.writeHead(200,{"Content-type":"text/html"});
