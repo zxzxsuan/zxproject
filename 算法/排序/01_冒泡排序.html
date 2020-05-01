@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr=[2,8,5,6,77,9,55];
+        
+        function fn(arr){
+            let len=arr.length;
+            for(var i=len-1;i>=0;i--){
+                for(var j=0;j<i;j++){
+                    var temp;
+                    if(arr[j]>arr[j+1]){
+                        //交换两个数的位置：方法一
+                        // temp=arr[j];
+                        // arr[j]=arr[j+1];
+                        // arr[j+1]=temp;
+                         //交换两个数的位置：方法二
+                        //[arr[j],arr[j+1]]=[arr[j+1],arr[j]];
+                         //交换两个数的位置：方法三
+                        arr[j+1]=arr[j+1]+arr[j];
+                        arr[j]=arr[j+1]-arr[j];
+                        arr[j+1]=arr[j+1]-arr[j];
+                    }
+                }
+            }
+            return arr;
+        }
+        console.log(fn(arr));
+    </script>
+</body>
+</html>
