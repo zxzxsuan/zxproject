@@ -6,6 +6,37 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        var calPoints = function(ops,index) {
+            var res=[];
+            var sum=0;
+            ops.forEach((item)=>{
+                switch(item){
+                    case "C":
+                        res.pop();
+                        break;
+                    case "D":
+                        var pre=res.pop();
+                        var now=pre*2;
+                        res.push(pre,now);
+                        break;
+                    case "+":
+                        var pre=res.pop();
+                        var ppre=res.pop();
+                        var now=ppre+pre;
+                        res.push(ppre,pre,now);
+                        break;
+                    default:
+                        res.push(item*1);
+                        break;
+                }
+            });
+            res.forEach((item)=>{
+                sum+=item;
+            });
+            return sum;
+        }
+        console.log(calPoints(["5","2","C","D","+"]));
+    </script>
 </body>
 </html>

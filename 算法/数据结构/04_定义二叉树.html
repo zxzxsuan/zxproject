@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Node{
+            constructor(val){
+                this.val=val;
+                this.left=undefined;
+                this.right=undefined;
+            }
+        }
+        class BinaryTree{
+            constructor(arr){
+                this.root=undefined;
+                arr.forEach((item)=>{
+                    this.insert(item);
+                })
+            }
+            insert(key){
+                if(!this.root){
+                    this.root=new Node(key);
+                }else{
+                    this.compare(this.root,key);
+                }
+            }
+            compare(root,key){
+                if(root.val<key){
+                    if(!root.right){
+                        root.right=new Node(key);
+                    }else{
+                        this.compare(root.right,key);
+                    }
+                }else{
+                    if(!root.left){
+                        root.left=new Node(key);
+                    }else{
+                        this.compare(root.left,key);
+                    }
+                }
+            }
+            min(){
+                function fn(node){
+                    while(node.left){
+                        node=node.left;
+                    }
+                    return node.val;
+                }
+                return fn(this.root);
+            }
+            //中序遍历
+            middleTraversal(){
+                function fn(root){
+                    if(root.left){
+                        fn(root.left);
+                    }
+                    console.log(root.val);
+                    if(root.right){
+                        fn(root.right);
+                    }
+                }
+                 fn(this.root);
+            }
+            //前序遍历
+            FrontTraversal(){
+                function fn(node){
+                    console.log(node.val);
+                    if(node.left){
+                        fn(node.left);
+                    }
+                    if(node.right){
+                        fn(node.right);
+                    }
+                }
+                fn(this.root);
+            }
+            //后序遍历
+            rearTraversal(){
+                function fn(node){
+                    if(node.left){
+                        fn(node.left);
+                    }
+                    if(node.right){
+                        fn(node.right);
+                    }
+                    console.log(node.val);
+                }
+                fn(this.root);
+            }
+        }
+        let bt= new BinaryTree([6,7,10,9,5,4,2]);
+        console.log(bt.min());
+        bt.middleTraversal();
+        bt.FrontTraversal();
+        bt.rearTraversal();
+    </script>
+</body>
+</html>
