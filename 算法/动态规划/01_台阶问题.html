@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //n层台阶，一次上一层或者两层，一共有几种方法
+        //方法一：递归
+        /*function step(n){
+            if(n==1){
+                return 1;
+            }else if(n==2){
+                return 2;
+            }else{
+                return step(n-1)+step(n-2);
+            }
+        }*/
+        //方法二，不递归
+        function step(n){
+            var n1=1,n2=2,res;
+            for(let i=3;i<=n;i++){
+                res=n1+n2;
+                n1=n2;
+                n2=res;
+            }
+            return res;
+        }
+        console.log(step(5));
+    </script>
+    
+</body>
+</html>
