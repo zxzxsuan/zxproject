@@ -12,8 +12,8 @@ import 'vant/lib/index.css';
 Vue.use(Vant);*/
 
 //vant按需引入
-import { Button,NavBar,Icon,Tabbar, TabbarItem,Swipe, SwipeItem,Lazyload } from 'vant';
-Vue.use(Button).use(NavBar).use(Icon).use(Tabbar).use(TabbarItem).use(Swipe).use(SwipeItem).use(Lazyload);
+import { Button,NavBar,Icon,Tabbar, TabbarItem,Swipe, SwipeItem,Lazyload,Tab, Tabs,Field,CellGroup } from 'vant';
+Vue.use(Button).use(NavBar).use(Icon).use(Tabbar).use(TabbarItem).use(Swipe).use(SwipeItem).use(Lazyload).use(Tab).use(Tabs).use(Field).use(CellGroup);
 
 //mock引入
 import '@/mock/mock.js';
