@@ -5,7 +5,7 @@ const bcrypt=require('bcrypt');
 
 const userSchema=new Schema({//设置集合中的key
     userId:Schema.Types.ObjectId,
-    userName:{unique:true,type:String},//名称与前端的打他名称一致！！！
+    userName:{unique:true,type:String},//名称与前端的data名称一致！！！
     password:String,
     createDate:{type:Date,default:Date.now()}
 });

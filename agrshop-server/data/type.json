@@ -1,0 +1,24 @@
+[
+    {
+        "typeId":1,
+        "typeName":"星星"
+    },{
+        "typeId":2,
+        "typeName":"月亮"
+    },{
+        "typeId":3,
+        "typeName":"粑粑"
+    },{
+        "typeId":4,
+        "typeName":"太阳"
+    },{
+        "typeId":5,
+        "typeName":"小花花"
+    },{
+        "typeId":6,
+        "typeName":"喷泉"
+    },{
+        "typeId":7,
+        "typeName":"狗狗"
+    }
+]

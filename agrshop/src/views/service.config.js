@@ -7,6 +7,8 @@ const URL={
     getHotProduct:MOCKURL+"getHotProduct",
     registUser:SERVERURL+"user/registUser",//在后端controller的user中有一个registUser方法
     loginUser:SERVERURL+"user/loginUser",
+    getTypes:SERVERURL+'type/getTypes',
+    getProductsByType:SERVERURL+'product/getProductsByType'
 };
 
 export default URL;

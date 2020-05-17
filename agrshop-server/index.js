@@ -15,8 +15,13 @@ app.use(bodyParser());
 //加载路由
 const Router=require('koa-router');
 let user=require('./controller/user.js');
+let product=require('./controller/product.js');
+let type=require('./controller/type.js');
 let router =new Router();
 router.use('/user',user.routes());//这个user与前端中service.config.js的user是一致的
+router.use('/product',product.routes());
+router.use('/type',type.routes());
+
 app.use(router.routes());
 app.use(router.allowedMethods());//只允许特定的方法进行请求，如果配置get就用get方法
 
