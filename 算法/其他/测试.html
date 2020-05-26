@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function findMax(str){
+            var temp=[];
+            var test='ATCG';
+            var arr=[];
+            
+            var result=[]
+            temp=str.split("");
+            temp.forEach((item,index)=>{
+                if(test.indexOf(item)!=-1){
+                    arr.push(index);
+                }
+            });
+            var count=1;
+            for(let i=0;i<arr.length-1;i++){
+                
+                if(arr[i]+1==arr[i+1]){
+                    count+=1;
+                    
+                }else{
+                    count=1;
+                }
+                    result.push(count);
+                
+            }
+            console.log(result);
+            if(result.length==0){
+                return 0;
+            }else if(result.length==1){
+                return result[0];
+            }else{
+                let max=0;
+                for(let j=0;j<result.length;j++){
+                    if(result[j]>max){
+                        max=result[j];
+                    }
+                }
+                return max;
+            }
+        }
+        console.log(findMax("ABCBOATCER"));
+    </script>
+</body>
+</html>

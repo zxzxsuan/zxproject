@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function toBinary(num,bit){
+            var newBi=num.toString(2);
+            //bit=bit-1;
+            var result=newBi.slice(newBi.length-bit,newBi.length-bit+1);
+            console.log(newBi)
+            return result;
+            //return newBi[length-bit]
+        }
+        console.log(toBinary(2,2))
+    </script>
+</body>
+</html>

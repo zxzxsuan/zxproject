@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function cssToCamel(sname){
+            var arr=sname.split("");
+            if(arr.indexOf("-")==0){
+                splice(0,1);
+            }
+            for(let i=0;i<arr.length;i++){
+                if(arr[i]=="-"){
+                    arr.splice(i,1);
+                    arr[i]=arr[i].toUpperCase();
+                }
+            }
+            sname=arr.join("");
+            return sname;
+        }
+        console.log(cssToCamel("text-indent-cacaca"))
+       
+    </script>
+</body>
+</html>

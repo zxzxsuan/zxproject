@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var isSubsequence = function(s, t) {
+           for(let i=0;i<s.length;i++){
+               if(t.indexOf(s[i])!=-1){
+                   t=t.substring(t.indexOf(s[i+1]))
+                   
+               }else{
+                   return false;
+               }
+           }
+           return true;
+        };
+        console.log(isSubsequence("akc","ahbgdc"))
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 方法一 弹性盒模型 */
+        #father{
+            display: flex;
+        }
+        #child1{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        #child3{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        #child2{
+            flex: 1;
+        }
+        /* 方法二
+        #child1{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            float:left;
+        }
+        #child3{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            float:right;
+        }
+        #child2{
+            margin:0 200px;
+        } */
+    </style>
+</head>
+<body>
+    <div id="father">
+        <div id="child1"></div>
+        <div id="child2"></div>
+        <div id="child3"></div>
+    </div>
+</body>
+</html>

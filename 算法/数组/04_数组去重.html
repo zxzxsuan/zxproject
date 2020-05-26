@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //用JavaScript脚本为Array对象添加一个去除重复项的方法。
+        //方法一：es6
+        Array.prototype.uniq=function(){
+            return [...new Set(this)];
+        }
+        
+        //方法二es5
+        Array.prototype.del=function(){
+            let temp=[];
+            this.forEach(item=>{
+                var str="";
+                str+=item;
+                let tempStr=temp.toString()
+                if(tempStr.indexOf(item)==-1){
+                    temp.push(item);
+                }
+            });
+            return temp;
+        };
+        var arr=new Array();
+        arr=[1,5,1,4,5,6,9,5];
+        console.log(arr.uniq())
+        console.log(arr.del())
+    </script>
+    
+</body>
+</html>

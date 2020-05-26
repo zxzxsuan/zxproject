@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var intersection = function(nums1, nums2) {
+            function sortLarge(a,b){
+                return a-b;
+            }
+            nums1.sort(sortLarge);
+            nums2.sort(sortLarge);
+            let result=[];
+            nums1.forEach(item=>{
+                for(let i=0;i<nums2.length;i++){
+                    if(item==nums2[i]){
+                        result.push(item);
+                    }
+                }
+            });
+            let set=new Set(result);
+            result=[...set];
+            return result;
+        };
+        console.log(intersection([1,2,2,1],[2,2]))
+        //用set实现交集
+        var intersection2 = function(nums1, nums2){
+            let temp=new Set(nums2);
+            let result=new Set(nums1.filter(item=>temp.has(item)));
+            //result=[...result]
+            return [...result];
+        } 
+        console.log(intersection2([1,2,2,1],[2,2]))
+
+        var intersect = function(nums1, nums2) {
+            let result=[];
+            nums1.forEach(item=>{
+                if(nums2.indexOf(item)!=-1){
+                    nums2.splice(nums2.indexOf(item),1);
+                    result.push(item);
+                }
+            })
+            return result;
+        };
+        console.log(intersect([1,2,2,1],[2,2]))
+    </script>
+    
+</body>
+</html>
