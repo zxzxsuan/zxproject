@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var isValid = function(s) {
+            // var arr=s.split("");
+            // var left=["(","{","["];
+            // var right=[")","}","]"];
+            // var test=[];
+            // for(let i=0;i<arr.length;i++){
+            //     if(left.indexOf(arr[i])!=-1){
+            //         test.push(arr[i]);
+            //     }else{
+            //         if(i==0){
+            //             return false;
+            //         }else{
+            //             if(arr[i]==")"){
+            //                 if(test.pop()!="("){
+            //                     return false;
+            //                 }
+            //             }else  if(arr[i]=="}"){
+            //                 if(test.pop()!="{"){
+            //                     return false;
+            //                 }
+            //             }else  if(arr[i]=="]"){
+            //                 if(test.pop()!="["){
+            //                     return false;
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
+            // return true;
+            let test=[];
+            for(let i=0;i<s.length;i++){
+                switch(s[i]){
+                    case "(":test.push(s[i]);break;
+                    case "[":test.push(s[i]);break;
+                    case "{":test.push(s[i]);break;
+                    case ")":{
+                        if(test.pop()!="("){
+                            return false
+                        }
+                        break;
+                    }
+                    case "}":{
+                        if(test.pop()!="{"){
+                            return false
+                        }
+                        break;
+                    }
+                    case "]":{
+                        if(test.pop()!="["){
+                            return false
+                        }
+                        break;
+                    }
+                }
+            }
+            if(test.length==0){
+                return true;
+            }else{
+                return false;
+            }
+        };
+        console.log(isValid("([)]"))
+    </script>
+</body>
+</html>

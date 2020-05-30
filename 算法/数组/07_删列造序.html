@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var minDeletionSize = function(A) {
+            let col=A.length;
+            let row=A[0].length;
+            let list=Array.apply(null,Array(row)).map(item=>{
+                return Array.apply(null,Array(col)).map(item=>{
+                    return ""
+                })
+            });
+            for(let i=0;i<col;i++){
+                for(let j=0;j<row;j++){
+                    list[j][i]=A[i][j]
+                }
+            }
+            let count=0;
+           list.forEach(item=>{
+               let len=item.length;
+               for(let i=0;i<len-1;i++){
+                   if(item[i]>item[i+1]){
+                        count++;
+                        break;
+                   }
+               }
+           })
+           return count;
+        }
+        console.log(minDeletionSize(["cba", "daf", "ghi"]))
+    </script>
+</body>
+</html>
