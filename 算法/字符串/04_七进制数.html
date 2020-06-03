@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var convertToBase7 = function(num) {
+            var flag=true;
+            var result="";
+            if(num<0){
+                flag=false;
+                num=Math.abs(num);
+
+            }
+            while(num>=7){
+                result=num%7+result;
+                num=parseInt(num/7);
+            }
+            result=num+result;
+           // console.log(result)
+            if(flag==false){
+                result="-"+result;
+                //result=result.toString();
+            }
+            return result;
+        };
+        console.log(convertToBase7(-7))
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var reverse = function(x) {
+            var temp=x.toString().split("").reverse();
+            while(temp[0]=='0'){
+                    temp.splice(0,1);
+                }
+            if(temp[temp.length-1]=='-'){
+                var i=temp.pop();
+                temp.unshift(i);
+            }
+            return temp.join("");
+        };
+        console.log(reverse(-1230))
+    </script>
+</body>
+</html>

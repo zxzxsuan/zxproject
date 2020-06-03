@@ -7,7 +7,68 @@
 </head>
 <body>
     <script>
-        
+        //相同二叉树
+        var isSameTree = function(p, q) {
+            if(p===null&&q===null){
+                return true;
+            }else if(q==null||p==null){
+                return false;
+            }else if(p.val!=q.val){
+                return false;
+            }else{
+                return isSameTree(p.left,q.left)&&isSameTree(p.right,q.right)
+            }
+        }
+        //对称二叉树
+        var isSymmetric = function(root) {
+            if(root==null){
+                return true;
+            }else{
+                symme(root.left,root.right)
+            }
+            function symme(a,b){
+                if(a==null&&b==null){
+                    return true;
+                }else if(a==null||b==null){
+                    return false;
+                }else if(a.val!=b.val){
+                    return false
+                }else{
+                    return symme(a.left,b.right)&&symme(a.right,b.left)
+                }
+            }
+        }
+        //二叉树的最大深度
+        var maxDepth = function(root) {
+            if(root==null){
+                return 0;
+            }else{
+                var left=maxDepth(root.left);
+                var right=maxDepth(root.right);
+                return Math.max(left,right)+1
+            }
+        }
+        //平衡二叉树
+        var isBalanced = function(root) {
+            if(!root){
+                return true;
+            }else{
+                if(Math.abs(getHeight(root.left)-getHeight(root.right))>1){
+                    return false;
+                }else{
+                    return isBalanced(root.left)&&isBalanced(root.right)
+                }
+            }
+            function getHeight(root){
+                if(root==null){
+                    return 0;
+                }else{
+                    var left=getHeight(root.left);
+                    var right=getHeight(root.right);
+                    return Math.max(left,right)+1;
+                }
+            }
+        }
     </script>
 </body>
 </html>
