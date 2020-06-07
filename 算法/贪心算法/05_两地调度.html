@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var twoCitySchedCost = function(costs) {
+            costs.sort((a,b)=>a[0]-a[1]-(b[0]-b[1]));
+             console.log(costs)
+           //costs.sort((a,b)=>{(a[0]-a[1])-(b[0]-b[1])});
+           var A=costs.splice(0,costs.length/2);
+           var B=costs.splice(0,costs.length)
+           var sum=0;
+           A.forEach(item=>{
+            sum+=item[0]
+           })
+           
+           B.forEach(item=>{
+            sum+=item[1]
+           })
+           return sum
+    //     let best = 0;
+    // // 按A-B的差值对原数组排序
+    // //costs.sort((a, b) => a[0] - a[1] - (b[0] - b[1]));
+    // costs.forEach((cost, index) => {
+    //   // 前N人加上A的费用 后N人加上去B的费用
+    //   index < costs.length / 2 ? best += cost[0] : best += cost[1];
+    // });
+    // return best;
+
+        };
+        console.log(twoCitySchedCost([[10,20],[30,200],[400,50],[30,20]]))
+    </script>
+</body>
+</html>

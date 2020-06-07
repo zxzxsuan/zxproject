@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <script>
+        let oDiv1=document.getElementById("div1");
+        oDiv1.onmousedown=function(e){
+            e=e||window.event;
+            let disX=e.clientX-oDiv1.offsetLeft;
+            let disY=e.clientY-oDiv1.offsetTop;
+            window.onmousemove=function(e){
+                let iLeft=e.clientX-disX;
+                let iTop=e.clientY-disY;
+                if(iLeft<=0){
+                    iLeft=0
+                }
+                if(iLeft>=document.documentElement.clientX-oDiv1.offsetLeft){
+                    iLeft=document.documentElement.clientX-oDiv1.offsetLeft
+                }
+                if(iTop<=0){
+                    iTop=0
+                }
+                if(iTop>=document.documentElement.clientY-oDiv1.offsetHeight){
+                    iTop=document.documentElement.clientY-oDiv1.offsetHeight
+                }
+                oDiv1.style.top=iTop+'px';
+                oDiv1.style.left=iLeft+"px";
+                //console.log(oDiv1.style.top)
+            }
+            oDiv1.onmouseup=function(){
+                window.onmousemove=null;
+                oDiv1.onmouseup=null
+            }
+        }
+    </script>
+</body>
+</html>

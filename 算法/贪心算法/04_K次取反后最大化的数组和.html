@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var largestSumAfterKNegations = function(A, K) {
+            var sum=0;
+            A.sort((a,b)=>a-b);
+            for(let i=0;i<K;i++){
+                A[0]=A[0]*-1;
+                A.sort((a,b)=>a-b);
+            }
+            A.forEach(item=>{
+                sum+=item;
+            });
+            return sum;
+        };
+        console.log(largestSumAfterKNegations([3,-1,0,2],1))
+    </script>
+</body>
+</html>

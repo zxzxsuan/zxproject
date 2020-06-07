@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+    </style>
+</head>
+
+<body>
+    <script>
+        var romanToInt = function (s) {
+            let map = {
+                I: 1,
+                V: 5,
+                X: 10,
+                L: 50,
+                C: 100,
+                D: 500,
+                M: 1000,
+                IV: 4,
+                IX: 9,
+                XL: 40,
+                XC: 90,
+                CD: 400,
+                CM: 900
+            };
+            let result = 0;
+            for (let i = 0; i < s.length;) {
+                if (i + 1 < s.length && map[s.substr(i, 2)]) {
+                    result += map[s.substr(i, 2)];
+                    i += 2
+                } else {
+                    result += map[s.substr(i, 1)]
+                    i++;
+                }
+            }
+            return result;
+        };
+        console.log(romanToInt("III"))
+    </script>
+</body>
+
+</html>

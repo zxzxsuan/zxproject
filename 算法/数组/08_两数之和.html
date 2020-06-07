@@ -1,24 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        var twoSum = function(nums, target) {
-           for(let i=0;i<=nums.length;i++){
-               let del=target-nums[i];
-               for(let j=1;j<=nums.length;j++){
-                   if(del==nums[j]){
-                       return [i,j]
-                   }
-               }
-           }
-            
-};
-    console.log(twoSum([3,2,4],6))
+        var twoSum = function (nums, target) {
+            for (let i = 0; i <= nums.length; i++) {
+                let del = target - nums[i];
+                for (let j = 1; j <= nums.length; j++) {
+                    if (del == nums[j]) {
+                        return [i, j]
+                    }
+                }
+            }
+
+        };
+        console.log(twoSum([3, 2, 4], 6))
+
+        var removeElement = function (nums, val) {
+            for (let i = 0; i < nums.length; i++) {
+                if (nums[i] == val) {
+                    nums.splice(i, 1);
+                    i--;
+                }
+            }
+            return nums
+        };
+        console.log(removeElement([3, 2, 2, 3], 3))
+        var removeDuplicates = function (nums) {
+            nums = [...new Set(nums)];
+            return nums
+        };
+        console.log(removeDuplicates([1, 1, 2]));
+       
+
+        var threeSum = function (nums) {
+            nums.sort((a, b) => a - b);
+            var result = []
+            for (let i = 0; i < nums.length; i++) {
+                for (let j = i + 1; j < nums.length; j++) {
+                    for (let z = nums.length - 1; z > j; z--)
+                        if (nums[i] + nums[j] == nums[z]*-1) {
+                            //console.log(i,j,z)
+                            var arr = [nums[i], nums[j], nums[z]]
+                            result.push(arr)
+                        }
+                }
+            }
+            for(let i =0;i<result.length;i++){
+                for(let j=1;j<result.length;j++)
+                if(result[i]==result[j]){
+                    result.splice(j,1);
+                    j--;
+                }
+            }
+            return result
+        };
+        console.log(threeSum([-1, 0, 1, 2, -1, -4]))
     </script>
 </body>
+
 </html>
