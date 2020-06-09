@@ -24,10 +24,41 @@
                 return this.head;
             }
         }
-        let nl=new NodeList([5,3,2,6,1]);
-        while(nl){
-            console.log(nl.val);
-            nl=nl.next;
+        // let nl=new NodeList([5,3,2,6,1]);
+        // while(nl){
+        //     console.log(nl.val);
+        //     nl=nl.next;
+        // }
+        let mergeList=(a,b)=>{
+            let preHead=new Node(-1);
+            let pre=preHead;
+            while(a!=null&&b!=null){
+                if(a.val<=b.val){
+                    pre.next=a;
+                    a=a.next;
+                }else{
+                    pre.next=b;
+                    b=b.next;
+                }
+                pre=pre.next;
+            }
+            if(a==null){
+                pre.next=b;
+            }else{
+                pre.next=a;
+            }
+            return preHead.next;
+        }
+
+        let reverseList=(head)=>{
+            var curr=head,temp=null,res=null;
+            while(curr){
+                temp=curr.next;
+                curr.next=result;
+                result=curr;
+                curr=temp;
+            }
+            return result;
         }
     </script>
 </body>

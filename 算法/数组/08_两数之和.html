@@ -37,7 +37,7 @@
             return nums
         };
         console.log(removeDuplicates([1, 1, 2]));
-       
+
 
         var threeSum = function (nums) {
             nums.sort((a, b) => a - b);
@@ -45,23 +45,32 @@
             for (let i = 0; i < nums.length; i++) {
                 for (let j = i + 1; j < nums.length; j++) {
                     for (let z = nums.length - 1; z > j; z--)
-                        if (nums[i] + nums[j] == nums[z]*-1) {
+                        if (nums[i] + nums[j] == nums[z] * -1) {
                             //console.log(i,j,z)
                             var arr = [nums[i], nums[j], nums[z]]
                             result.push(arr)
                         }
                 }
             }
-            for(let i =0;i<result.length;i++){
-                for(let j=1;j<result.length;j++)
-                if(result[i]==result[j]){
-                    result.splice(j,1);
-                    j--;
-                }
+            for (let i = 0; i < result.length; i++) {
+                for (let j = 1; j < result.length; j++)
+                    if (result[i] == result[j]) {
+                        result.splice(j, 1);
+                        j--;
+                    }
             }
             return result
         };
         console.log(threeSum([-1, 0, 1, 2, -1, -4]))
+
+        function square(arr) {
+            let result = [];
+            arr.forEach(item => {
+                result.push(Math.pow(item, 2))
+            })
+            return result
+        }
+        console.log(square([1, 2, 3]))
     </script>
 </body>
 
