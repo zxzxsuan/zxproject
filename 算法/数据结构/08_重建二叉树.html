@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var buildTree = function (preorder, inorder) {
+            if(!preorder.length||!inorder.length){
+                return null
+            }
+            var node=new TreeNode(preorder[0]);
+            let i=0;
+            for(;i<inorder.length;++i){
+                if(inorder[i]==preorder[0]){
+                    break;
+                }
+            }
+            node.left=buildTree(preorder.silce(1,i+1),inorder.slice(0,i));
+            node.right=buildTree(preorder.slice(i+1),inorder.slice(i+1));
+            return node;
+        };
+    </script>
+</body>
+
+</html>

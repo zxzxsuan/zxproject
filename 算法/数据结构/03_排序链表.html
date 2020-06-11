@@ -1,65 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        class Node{
-            constructor(val){
-                this.val=val;
-                this.next=undefined;
+        class Node {
+            constructor(val) {
+                this.val = val;
+                this.next = undefined;
             }
         }
-        class NodeList{
-            constructor(arr){
-                this.head=new Node(arr[0]);
-                let temp=this.head;
-                for(var i=1;i<arr.length;i++){
-                    temp.next=new Node(arr[i]);
-                    temp=temp.next;
+        class NodeList {
+            constructor(arr) {
+                this.head = new Node(arr[0]);
+                let temp = this.head;
+                for (var i = 1; i < arr.length; i++) {
+                    temp.next = new Node(arr[i]);
+                    temp = temp.next;
                 }
                 return this.head;
             }
         }
-        // let nl=new NodeList([5,3,2,6,1]);
+        var swap =  (p, q) =>{
+            [p.val, q.val] = [q.val, p.val];
+        }
+        var pos =  (begin, end) =>{//找到基准值
+            let first = begin.val;
+            let p = begin;
+            let q = begin.next;
+            while (q != end) {
+                if (q.val <first) {
+                    swap(p.next,q)
+                    q = q.next;
+                    p = p.next
+                } else {
+                    q = q.next;
+                }
+            }
+            swap(begin,p)
+            return   p;
+        }
+        var sort =  (begin, end)=> {
+            if (begin != end) {
+                let obj = pos(begin, end);
+                sort(begin, obj);
+                sort(obj.next, end);
+            }
+            return begin;
+        }
+         let nl=new NodeList([5,3,2,6,1]);
+       console.log(sort(nl))
         // while(nl){
         //     console.log(nl.val);
         //     nl=nl.next;
         // }
-        let mergeList=(a,b)=>{
-            let preHead=new Node(-1);
-            let pre=preHead;
-            while(a!=null&&b!=null){
-                if(a.val<=b.val){
-                    pre.next=a;
-                    a=a.next;
-                }else{
-                    pre.next=b;
-                    b=b.next;
-                }
-                pre=pre.next;
-            }
-            if(a==null){
-                pre.next=b;
-            }else{
-                pre.next=a;
-            }
-            return preHead.next;
-        }
 
-        let reverseList=(head)=>{
-            var curr=head,temp=null,res=null;
-            while(curr){
-                temp=curr.next;
-                curr.next=result;
-                result=curr;
-                curr=temp;
-            }
-            return result;
-        }
+
+        //合并两个排序链表
+        // let mergeList = (a, b) => {
+        //     let preHead = new Node(-1);
+        //     let pre = preHead;
+        //     while (a != null && b != null) {
+        //         if (a.val <= b.val) {
+        //             pre.next = a;
+        //             a = a.next;
+        //         } else {
+        //             pre.next = b;
+        //             b = b.next;
+        //         }
+        //         pre = pre.next;
+        //     }
+        //     if (a == null) {
+        //         pre.next = b;
+        //     } else {
+        //         pre.next = a;
+        //     }
+        //     return preHead.next;
+        // }
+        // //反转链表
+        // let reverseList = (head) => {
+        //     var curr = head,
+        //         temp = null,
+        //         res = null;
+        //     while (curr) {
+        //         temp = curr.next;
+        //         curr.next = result;
+        //         result = curr;
+        //         curr = temp;
+        //     }
+        //     return result;
+        // }
     </script>
 </body>
+
 </html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var spiralOrder = function (matrix) {
+            let left=0,top=0,bottom=matrix.length-1,right=matrix[0].length-1;
+            let result=[];
+            let size=(bottom+1)*(right+1);
+            while(result.length!=size){
+                for(var i=left;i<=right;i++){
+                    result.push(matrix[top][i]);
+                }
+                top++;
+                for(var j=top;j<=bottom;j++){
+                    result.push(matrix[j][right])
+                }
+                right--;
+                if(result.length==size){
+                    break;
+                }
+                for(var x=right;x>=left;x--){
+                    result.push(matrix[bottom][x])
+                }
+                bottom--;
+                
+                for(var y=bottom;y>=top;y--){
+                    result.push(matrix[y][left])
+                }
+                left++;
+                
+            }
+            return result;
+        };
+        console.log(spiralOrder([[1,2,3,4],[5,6,7,8],[9,10,11,12]]))
+    </script>
+</body>
+
+</html>
