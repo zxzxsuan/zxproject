@@ -9,7 +9,7 @@
 
 <body>
     <script>
-
+        //重建二叉树
         var buildTree = function (preorder, inorder) {
             if(!preorder.length||!inorder.length){
                 return null
@@ -25,6 +25,70 @@
             node.right=buildTree(preorder.slice(i+1),inorder.slice(i+1));
             return node;
         };
+        //层次遍历二叉树
+        var levelOrder = function(root) {
+            if(!root){
+                return []
+            }else{
+                var nowNode=[root];
+                var result=[];
+                while(nowNode.length!=0){
+                    var temp=[],current=[];
+                    while(nowNode.length!=0){
+                        var node=nowNode.shift();
+                        current.push(node.val);
+                        if(node.left){
+                            temp.push(node.left)
+                        }
+                        if(node.right){
+                            temp.push(node.right)
+                        }
+                    }
+                    nowNode=temp;
+                    result.push(current)
+                }
+                return result;
+            }
+        }
+
+        //二叉树的路径总和
+        var pathSum=function(root,sum){
+            let res=[];
+            help(root,sum,res,[]);
+            return res;
+            function help(root,sum,res,arr){
+                if(root==null) return;
+                arr.push(root.val);
+                if(root.left==null&&root.right==null&&root.val==sum){
+                    res.push([...arr])
+                }
+                help(root.left,sum-root.val,res,arr);
+                help(root.right,sum-root.val,res,arr);
+                arr.pop();
+            }
+        }
+        //从上到下打印二叉树
+        function printTree(root){
+            if(root==null){
+                return [];
+            }
+            var nodeList=[root],res=[];
+            while(nodeList.length!=0){
+                var temp=[];
+                while(nodeList.length!=0){
+                    var node=nodeList.shift();
+                    res.push(node.val);
+                    if(node.left){
+                        temp.push(node.left)
+                    }
+                    if(node.right){
+                        temp.push(node.right)
+                    }
+                }
+                nodeList=temp;
+            }
+            return res;
+        }
     </script>
 </body>
 

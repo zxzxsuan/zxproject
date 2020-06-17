@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var minNumber = function (nums) {
+            //return nums.sort((a,b)=>(""+a+b)-(""+b+a)).join("")
+            for (let i = 0; i < nums.length; i++) {
+                nums[i] = "" + nums[i];
+            }
+            var res = [];
+            while (nums.length != 0) {
+                var min = 10,
+                    temp;
+                nums.forEach((item, index) => {
+                    if (item[0] < min) {
+                        min = item[0];
+                        temp = index;
+                    } else if (item[0] == min) {
+                        if (item + nums[temp] < nums[temp] + item) {
+                            temp = index;
+                        }
+                    }
+                })
+                res.push(nums[temp]);
+                nums.splice(temp, 1)
+            }
+            return res.join("")
+        };
+        console.log(minNumber([2, 1]))
+
+
+
+       
+    </script>
+</body>
+
+</html>

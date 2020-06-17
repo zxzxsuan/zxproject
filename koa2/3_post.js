@@ -3,8 +3,8 @@ const app=new Koa();
 
 app.use(async ctx=>{
     //叠加数据
-    let data=[];
-
+    let data="";
+    console.log(ctx)
     //监听data事件，收到表单数据时候就会执行
     ctx.req.on('data',chunk=>{
         data+=chunk;

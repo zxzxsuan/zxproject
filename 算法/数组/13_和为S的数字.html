@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var twoSum = function (nums, target) {
+            var left = 0,
+                right = nums.length - 1;
+            var temp, res = [];
+            while (left < right) {
+                if (target - nums[left] == nums[right]) {
+                    if (res.length != 0) {
+                        if (temp > nums[left] * nums[right]) {
+                            res = [];
+                            res.push(nums[left]);
+                            res.push(nums[right]);
+                        }
+
+                    } else {
+                        temp = nums[left] * nums[right];
+                        res.push(nums[left]);
+                        res.push(nums[right]);
+                    }
+                } else if (target - nums[left] < nums[right]) {
+                    right--;
+                } else if (target - nums[left] > nums[right]) {
+                    left++;
+                }
+            }
+            return res;
+        };
+        console.log(twoSum([2,7,11,15],9))
+    </script>
+</body>
+
+</html>

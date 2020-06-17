@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+        }
+        #div2{
+            width: 200px;
+            height: 200px;
+            background-color:rebeccapurple
+        }
+        #div3{
+            width: 100px;
+            height: 100px;
+            background-color:salmon;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2">
+            <div id="div3"></div>
+        </div>
+    </div>
+    <script>
+        let oDiv1=document.getElementById("div1")
+        let oDiv2=document.getElementById("div2")
+        let oDiv3=document.getElementById("div3")
+        // oDiv1.addEventListener('click',function(){
+        //     console.log('冒泡div1')
+        // },false)
+        // oDiv2.addEventListener('click',function(){
+        //     console.log('冒泡div2')
+        // },false)
+        oDiv3.addEventListener('click',function(){
+            console.log('冒泡div3')
+        },false)
+        // oDiv1.addEventListener('click',function(){
+        //     console.log('捕获div1')
+        // },true)
+        // oDiv2.addEventListener('click',function(){
+        //     console.log('捕获div2')
+        // },true)
+        oDiv3.addEventListener('click',function(){
+            console.log('捕获div3')
+        },true)
+    </script>
+</body>
+</html>
