@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var restoreIpAddresses = function (s) {
+            if (s.length > 12) return [];
+            let result = [];
+            fn(s, [], result);
+            return result;
+
+            function regular(str) {
+                if (!str.length) return false
+                return +str >= 0 && +str <= 255 && (s.length > 1 ? !!+s[0] : true)
+            }
+
+            function fn(remain, temp, result) {
+                if (temp.length == 3) {
+                    regular(remain)&&result.push([...temp,remain].join("."))
+                    return;
+                }
+                for(let i=1;i<4;i++){
+                    regular(remain.slice(0,i))&&fn(remain.slice(i),[...temp,remain.slice(0,i)],result)
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
