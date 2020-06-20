@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var findCircleNum = function (M) {
+            let n = M.length;
+            if (n == 0) return 0;
+            let count = 0;
+            let visited=new Array(M.length).fill(0)
+            // let visited = Array.from({
+            //     length: M.length
+            // }).fill(0);
+            for (let i = 0; i < visited.length; i++) {
+                if (!visited[i]) {
+                    visited[i] = 1;
+                    dfs(i);
+                    count++;
+                }
+            }
+            return count;
+
+            function dfs(i) {
+                for (let j = 0; j < M.length; j++) {
+                    if (i != j && !visited[j] && M[i][j]) {
+                        visited[j] = 1;
+                        dfs(j)
+                    }
+                }
+            }
+        }
+    
+        console.log(findCircleNum([[1,0,0,1],[0,1,1,0],[0,1,1,1],[1,0,1,1]]
+))
+    </script>
+</body>
+
+</html>

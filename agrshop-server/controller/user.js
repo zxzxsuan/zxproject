@@ -6,13 +6,13 @@ const mongoose=require('mongoose');
 router.post('/registUser',async (ctx)=>{//这个registUser与前端中service.config.js的registUser是一致的
     // console.log('请求成功');
     // ctx.body='请求成功';
-    //获取model
+    //获取model 与model/User.js导出的名字是一致的
     const User=mongoose.model('User');
     //接收post请求封装成user对象
     let newUser=new User(ctx.request.body);
     //使用save保存用户信息
     await newUser.save().then(()=>{
-        ctx.body={
+        ctx.boy={
             code:200,
             message:'注册成功'
         };

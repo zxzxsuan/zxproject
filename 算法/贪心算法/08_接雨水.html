@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var trap = function(height) {
+        //     let max_left=[],max_right=[],max=0;
+        //     for(let i=0;i<height.length;i++){
+        //         max=max>height[i]?max:height[i];
+        //         max_left[i]=max;
+        //     }
+        //    max=0;
+        //     for(let i=height.length-1;i>=0;i--){
+        //         max=max>height[i]?max:height[i];;
+        //         max_right[i]=max
+        //     }
+        //     let res=0
+        //     for(let i=0;i<height.length;i++){
+        //         res+=Math.min(max_right,max_left)-height[i]
+        //     }
+        //     return res
+        // }
+
+        var merge = function (intervals) {
+            for (let i = 0; i < intervals.length; i++) {
+                console.log(intervals[i][1])
+                for (let j = 0; j < intervals.length; j++){
+                    if (intervals[i][1] >= intervals[j][0] && intervals[i][1]<=intervals[j][1]&&i != j) {
+                        var temp = intervals[j][1];
+                        
+                        intervals[i] = [intervals[i][0], temp]
+                        console.log(intervals[i])
+                        intervals.splice(j, 1)
+                        
+                    }
+                }
+                    
+            }
+            return intervals
+        };
+        console.log(merge([[1,3],[2,6],[8,10],[15,18]]))
+    </script>
+</body>
+
+</html>

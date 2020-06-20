@@ -20,7 +20,16 @@
                 alert(aLi[i].innerHTML);;
             }
         }
-        
+        var checkInclusion = function(s1, s2) {
+            s1=s1.split("").sort().join("");
+            let len=s1.length;
+            for(let i=0;i<s2.length;i++){
+                if(s2.slice(i,i+len).split("").sort().join("")==s1){
+                    return true;
+                }
+            }
+            return false
+        }
     </script>
 </body>
 </html>
