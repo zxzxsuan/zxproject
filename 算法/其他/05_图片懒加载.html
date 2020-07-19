@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <div style="height: 1000px;"></div>
+    <img src="20180305223448_nzwsy.jpg" data-src="../html/20191110001322_jotjw.jpg" alt="">
+    <script>
+        var aImg=document.getElementsByTagName("img");
+        var len=aImg.length,count=0;
+        lazyload();
+        window.addEventListener("scroll",lazyload)
+        function lazyload(){
+            let viewHeight=document.documentElement.clientHeight;
+            let scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+            for(let i=count;i<len;i++){
+                console.log(viewHeight)
+                if(aImg[i].offsetTop<viewHeight+scrollTop){
+                   
+                    if(aImg[i].getAttribute("src")!=="20180305223448_nzwsy.jpg"){
+                        continue;
+                    }
+                    aImg[i].src=aImg[i].dataset.src;
+                    console.log(aImg[i].dataset.src)
+                    count++;
+                }
+                
+            }
+        }
+    </script>
+</body>
+</html>

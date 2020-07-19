@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+
+    </div>
+    <script>
+        var oDiv1=document.getElementById("div1");
+        
+        oDiv1.addEventListener('mousemove',
+            debounce(zz,1000)
+        )
+        function zz(){
+                console.log('123')
+            }
+        function debounce(fn,delay){
+            var timer=null;
+            return function(){
+                if(timer!=null){
+                    clearTimeout(timer)
+                }
+                timer=setTimeout(fn,delay)
+            }
+        }
+    </script>
+</body>
+</html>

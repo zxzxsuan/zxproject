@@ -7,6 +7,8 @@
       </div>
       <div>{{$store.state}}</div> -->
       <button @click="add">点击加一</button>
+      <button @click="$store.commit('reduce')">点击减一</button>
+      <button @click="addAction">点击减一</button>
       <div>
         {{count}}
       </div>
@@ -20,14 +22,15 @@
 </template>
 
 <script>
-import{mapState,mapMutations,mapGetters} from 'vuex'
+import{mapState,mapMutations,mapGetters,mapActions} from 'vuex'
 export default {
     computed:{
       ...mapState(['count']),
       ...mapGetters(['newCount'])
     },
     methods:{
-      ...mapMutations(["add"])
+      ...mapMutations(["add"]),
+      ...mapActions(["addAction"])
     }
 }   
 </script>

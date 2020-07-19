@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #dialog-mask{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0,0,0,.5);
+        }
+        #dialog-alert{
+            width: 400px;
+            height: 300px;
+            background-color: #ffffff;
+            position: absolute;
+            top: 50%;
+            left:50%;
+            margin-top:-150px;
+            margin-left:-200px
+        }
+        #dialog-alert-title{
+            height: 30px;
+            line-height: 30px;
+            background-color: #000;
+            color: #ffffff;
+        }
+        #dialog-alert-title-name{
+            float: left;
+        }
+        #dialog-alert-title-close{
+            float: right;
+            cursor:pointer;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="isLogin=true" >登录</button>
+        <button @click="isRegister=true" >注册</button>
+        <my-dialog v-show="isLogin" @close="isLogin=false">
+            <span slot="title-name">登录</span>
+            <div slot="alert-content">
+                用户名：<input type="text"><br>
+                密码：<input type="password"><br>
+                <button>登录</button>
+            </div>
+        </my-dialog>
+        <my-dialog v-show="isRegister" @close="isRegister=false">
+            <span slot="title-name">注册</span>
+            <div slot="alert-content">
+                用户名：<input type="text"><br>
+                密码：<input type="password"><br>
+                邮箱<input type="email"><br>
+                <button>注册</button>
+            </div>
+        </my-dialog>
+    </div>
+    
+    <template id="dialog">
+        <div id="dialog-mask">
+            <div id="dialog-alert">
+                <div id="dialog-alert-title">
+                    <div id="dialog-alert-title-name">
+                        <slot name='title-name'></slot>
+                    </div>
+                    <div id="dialog-alert-title-close" @click="$emit('close')">[x]</div>
+                </div>
+                <div id="dialog-alert-content">
+                    <slot name="alert-content"></slot>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <script src="../../vue/vue.js"></script>
+    <script>
+        
+        Vue.component('my-dialog',{
+            template:"#dialog"
+        })
+        new Vue({
+            el:"#app",
+            data:{
+                isLogin:false,
+                isRegister:false
+            },
+            // components:{
+            //     'my-dialog':{
+            //     template:"#dialog"
+            // }
+            // }
+        })
+    </script>
+</body>
+</html>

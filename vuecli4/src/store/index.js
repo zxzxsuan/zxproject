@@ -16,9 +16,18 @@ export default new Vuex.Store({
   mutations: {
     add(state){
       state.count++;
+    },
+    reduce(state){
+      state.count--;
     }
   },
-  actions: {
+  actions: {//acttion 提交的是Mutation，而不是直接变更状态
+    addAction({commit}){
+      setTimeout(() => {
+         commit('add')
+      }, 1000);
+     
+    }
   },
   modules: {
   }
